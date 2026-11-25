@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <!-- Apply the saved theme (dark by default) before first paint, so there is no flash. -->
+    <script>
+      // Some hosts (sandboxed frames, strict privacy modes) forbid browser storage and
+      // throw on any access. Swap in an in-memory stand-in so the app still starts;
+      // settings then last for the visit only.
+      (function () {
+        function memory() {
+          var data = {};
+          return {
+            getItem: function (k) { return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+            setItem: function (k, v) { data[k] = String(v); },
+            removeItem: function (k) { delete data[k]; },
+            clear: function () { data = {}; },
+            key: function (i) { return Object.keys(data)[i] || null; },
+            get length() { return Object.keys(data).length; }
+          };
+        }
+        ['localStorage', 'sessionStorage'].forEach(function (name) {
+          try { var s = window[name]; s.setItem('__probe', '1'); s.removeItem('__probe'); }
+          catch (e) { try { Object.defineProperty(window, name, { value: memory(), configurable: true }); } catch (e2) {} }
+        });
+      })();
+      try {
+        var t = localStorage.getItem('theme');
+        // Dark unless the visitor has picked light themselves (saved from Settings).
+        if (t !== 'light' && t !== 'dark') t = 'dark';
+        document.documentElement.classList.toggle('dark', t === 'dark');
+        document.documentElement.style.colorScheme = t;
+      } catch (e) { document.documentElement.classList.add('dark'); }
+    </script>
+    <!-- seo:start (the build replaces this block per route; see src/seo/routes.ts) -->
+    <title>Опознай България – игри, куиз и флашкарти за всяка област</title>
+    <meta name="description" content="Играй куиз за 28-те области, подреди картата и разгледай историята от 681 г. до днес. Безплатни образователни игри за ученици." />
+    <!-- seo:end -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="https://storage.googleapis.com/gpt-engineer-file-uploads/SjcPeLSsEYZ8fnTJoTj4owB10II2/uploads/1764861502567-Flag_map_of_Bulgaria.svg.png">
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

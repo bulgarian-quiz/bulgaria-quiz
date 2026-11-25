@@ -1,0 +1,48 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791127389493,
+      "tag": "0000_restrict_game_player_inserts_to_owner_or_room_creator_bot",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795547547875,
+      "tag": "0001_secure_points_and_private_stats",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795547588456,
+      "tag": "0002_add_join_room_by_invite_code",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795548317565,
+      "tag": "0003_secure_room_status_and_scores",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1795552404988,
+      "tag": "0004_photo_game",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1795552568076,
+      "tag": "0005_restore_profile_suspension_schema",
+      "breakpoints": true
+    }
+  ]
+}

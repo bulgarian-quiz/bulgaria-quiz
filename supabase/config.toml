@@ -1,0 +1,10 @@
+project_id = "your-supabase-project-id"
+
+[functions.chat]
+verify_jwt = false
+
+[functions.check-answer]
+verify_jwt = false
+
+[functions.moderate-profile]
+verify_jwt = false

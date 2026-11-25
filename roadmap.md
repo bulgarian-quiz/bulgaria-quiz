@@ -1,0 +1,63 @@
+# Roadmap — 3D desktop experience
+- [x] Stage 1 Boot + choice screen
+- [x] Stage 2 PC room + terminal (fastfetch, divein)
+- [x] Stage 3 Tower in space, real-time lit Earth, hands, mouse-look
+- [x] Stage 4 Tablet menu (games currently open legacy pages)
+- [x] Stage 5 Game 1 flight, parachute, landing
+- [x] Stage 6 Car questions + highway driving
+- [x] Stage 7 Game 2 3D drag & drop
+- [x] Stage 8 Sound, quality tiers, polish
+- [x] Simplify startup to language selection and move 3D entry below the school logo
+- [x] Add Escape-key exit from 3D mode to the standard website
+- [x] Add the scroll-driven Bulgaria title and interactive lion opening to the standard homepage
+- [x] Replace the startup terminal and lion opening with a 20-chapter scroll-driven history timeline
+- [x] Separate the timed Bulgaria title reveal from the timeline and lengthen chapter scrolling
+- [x] Add communist-era timeline chapters and remove all homepage sections after the timeline
+- [x] Extend the homepage beyond the timeline with the space-to-Bulgaria scroll sequence
+- [x] Add the scroll-revealed games title, typed game introductions, and keyboard selector
+- [x] Change the timeline's large year accent from light blue to dark red
+- [x] Deepen the Earth close-up and remove the Bulgaria marker
+- [x] Extend game-description pacing and enlarge the game selector
+- [x] Redesign both standard games and shared setup/popups to match the cinematic homepage
+- [x] Prevent the handwritten Bulgaria wordmark from flashing in a fallback font
+
+- [x] Add post-Earth Games/Flashcards destination selector
+- [x] Restore rounded styling and replace blue accents with red
+- [x] Return completed activities to their section selector
+- [x] Fix the clipped post-Earth transition and add a scroll-written closing introduction
+- [x] Simplify the toolbar with larger icons and unified settings
+- [x] Remove the post-Earth destination selector and keep Earth centered through the dive
+- [x] Keep the Bulgaria wordmark visible until scrolling and shorten the post-Earth quote transition
+- [x] Restore all desktop toolbar actions on mobile
+- [x] Fix second-game bot stalls at 0/28
+- [x] Shorten the Earth-to-closing-message scroll gap further
+- [x] Improve interaction and rendering performance across the site
+- [x] Add a clean post-scroll Continue the journey page with games, flashcards, about, profile, and image tiles
+- [x] Apply the selected clean minimal redesign direction and hover behavior
+- [x] Change unstable game city travel time from 15 seconds to 3 seconds
+- [x] Fix mobile drag-and-drop and tap placement
+- [x] Honor mobile browser “Request Desktop Site” mode
+- [x] Deep-audit code and test all normal-user journeys
+- [x] Re-run security scan and leave zero error findings
+- [x] Add introduction Skip and 40-second film controls
+- [x] Remove the blank scroll after the closing message and fix journey text clipping
+- [x] Unify all interactive pages, buttons, menus and popups with the journey theme
+- [x] Verify normal-user journeys on desktop/mobile and scan security
+- [x] Replace /games artwork with distinct new images
+- [x] Redesign both standard game maps in the journey theme
+- [x] Repair 3D satellite region placement on real satellite imagery
+- [x] Hold timeline images at full-screen size before departure
+- [x] Audit and verify affected flows on desktop/mobile; scan security
+- [x] Polish motion and interaction, fix accessibility, streak, layout and label bugs; split route bundles
+- [x] Visual redesign: Atlas design system (palette, type, shevitsa band, pill navigation, duotone photography, atlas map tints)
+- [x] Black or white Apple-style themes with Apple system fonts and a navigation theme toggle
+- [x] Bulgarian-flag accents on the black/white base; base-relative public assets and an opt-in hash router for hosted previews
+- [x] Motion beyond the intro: scroll reveals, Ken Burns photographs, stitched band, self-building map, answer feedback
+- [x] Scroll-linked motion graphics: self-drawing province line art, scrubbed card rise, photo parallax, mosaic tiles and word-by-word heading
+- [x] Rebuild the 3D beta mode: post-processing and quality tiers, station with holographic Bulgaria, endless Game 1 world with chase camera, 3D province board for Game 2, redesigned tablet and HUD
+
+## Requested backend release
+- [x] Deploy moderate-profile; redeploy check-answer and chat (admin-moderation was later removed)
+- [x] Apply the photo-game SQL migration and verify the live schema
+- [x] Restore the missing suspension table and regenerate types to resolve preview errors
+- [ ] Apply the full profile-moderation SQL migration — blocked by migration-tool argument truncation; the suspension table and its access rules are restored separately, but moderation functions and triggers remain pending
