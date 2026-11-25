@@ -1,0 +1,502 @@
+{
+ "pages": [
+  {
+   "path": "/",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [
+    "Bulgaria"
+   ],
+   "h2": [
+    "Основаване на България",
+    "Краткото пътуване свърши. Историята продължава с теб — време е да се забавляваме.",
+    "Продължипътешествието"
+   ],
+   "words": 100,
+   "imgs": [
+    {
+     "src": "history-681-CnU_QWFN.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "eager"
+    },
+    {
+     "src": "history-864-7rjwQ5bY.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-917-FGrM6Bkp.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1018-DC2ofOTR.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1185-CQuY0a91.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1230-CH0Y_m4p.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1396-BzPiWCPb.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1762-BoUOqzRl.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1835-D_d9gL7S.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1876-gQiRGEgq.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1878-Css3RyC4.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1885-BZ2ciYuQ.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1908-1QrjDYKy.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1912-CjmtEAOK.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1943-CMXiILvG.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1944-B4g0Z-rO.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1946-CGAK9ynX.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1968-BTSiAwB_.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1984-DQ_B8s41.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-1989-GnZ9s72x.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-2004-BuxsJd7f.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-2007-ZNk40erh.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-2026-B_mJlSH1.jpg",
+     "alt": "",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "history-2026-B_mJlSH1.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "history-681-CnU_QWFN.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "history-1878-Css3RyC4.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "history-2026-B_mJlSH1.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Пропусни Гледай като кратък филм Опознай България Игри Флашкарти За нас Вход Bulgaria 681 Основаване на България Хан Аспарух утвърждава държавата южно от Дунав. 681 864 917 1018 1185 1230 1396 1762 1835 1876 1878 1885 1908 1912 1943 1944 1946 1968 1984 1989 2004 2007 2026 01 23 ПРЕВЪРТИ ВЕЧЕ СИ ТУК Краткото пътуване свърши. Историята продължава с теб — време е да се забавляваме. КЪМ ЗЕМЯТА Продълж"
+  },
+  {
+   "path": "/games",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [
+    "Игри"
+   ],
+   "h2": [
+    "Куиз за България",
+    "Подреди областите"
+   ],
+   "words": 65,
+   "imgs": [
+    {
+     "src": "",
+     "alt": "Куиз за България",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "",
+     "alt": "Подреди областите",
+     "wh": true,
+     "loading": "lazy"
+    },
+    {
+     "src": "",
+     "alt": "ПМГ Христо Смирненски",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "/game",
+    "/drag-drop-game",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Опознай България Игри Флашкарти За нас Вход Игри Куиз за България Играта представлява интересен куиз свързан с всяка област в България. Подходящ е за ученици над 4-ти клас. Започни играта Подреди областите В играта трябва да кликнете върху областта и с помощта на влачене я сложете там, където се намира на картата. Започни играта Влез във видеоигра режим (нестабилен) Имаш въпрос? Питай AI. Edit wit"
+  },
+  {
+   "path": "/flashcards",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [
+    "Флашкарти"
+   ],
+   "h2": [
+    "История",
+    "География",
+    "Общи интересни факти"
+   ],
+   "words": 69,
+   "imgs": [
+    {
+     "src": "history-681-CnU_QWFN.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "about-mountains-CD6geYMW.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "history-2026-B_mJlSH1.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "school-logo-VDG70hJG.png",
+     "alt": "ПМГ Христо Смирненски",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "/flashcards/history",
+    "/flashcards/geography",
+    "/flashcards/general",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Опознай България Игри Флашкарти За нас Вход Флашкарти История Флашкарти, от които можете да научите интересни факти за България, свързани с Историята. Разгледай флашкартите География Флашкарти, от които можете да научите интересни факти за България, свързани с Географията. Разгледай флашкартите Общи интересни факти Флашкарти, от които можете да научите интересни факти за България, свързани с всичк"
+  },
+  {
+   "path": "/about",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [
+    "За нас"
+   ],
+   "h2": [],
+   "words": 58,
+   "imgs": [
+    {
+     "src": "about-mountains-CD6geYMW.jpg",
+     "alt": "",
+     "wh": false,
+     "loading": "auto"
+    },
+    {
+     "src": "school-logo-VDG70hJG.png",
+     "alt": "ПМГ Христо Смирненски",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "mailto:m.mutafchiev2025@pmg-pernik.com",
+    "mailto:t.petrov2025@pmg-pernik.com",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Опознай България Игри Флашкарти За нас Вход За нас Ние сме ученици от ПМГ \"Христо Смирненски\" гр. Перник и създадохме този уебсайт с интересни игри. Мирослав Мутафчиев 6A клас, ПМГ \"Христо Смирненски\" Имейл за контакт: m.mutafchiev2025@pmg-pernik.com Теодор Петров 6A клас, ПМГ \"Христо Смирненски\" Имейл за контакт: t.petrov2025@pmg-pernik.com Влез във видеоигра режим (нестабилен) Имаш въпрос? Питай"
+  },
+  {
+   "path": "/game",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [
+    "Конфигурация"
+   ],
+   "words": 31,
+   "imgs": [],
+   "links": [
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Edit with Конфигурация Избери как ще изследваш картата. Режим на игра Соло Играй сам Мултиплейър Намери противник онлайн Срещу бот Играй срещу AI Таймер Искате ли таймер? Да Не Започни играта"
+  },
+  {
+   "path": "/drag-drop-game",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [
+    "Конфигурация"
+   ],
+   "words": 31,
+   "imgs": [],
+   "links": [
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Edit with Конфигурация Избери как ще подредиш областите. Режим на игра Соло Играй сам Мултиплейър Намери противник онлайн Срещу бот Играй срещу AI Таймер Искате ли таймер? Да Не Започни играта"
+  },
+  {
+   "path": "/flashcards/history",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [],
+   "words": 2,
+   "imgs": [],
+   "links": [
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Edit with"
+  },
+  {
+   "path": "/flashcards/geography",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [],
+   "words": 2,
+   "imgs": [],
+   "links": [
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Edit with"
+  },
+  {
+   "path": "/flashcards/general",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [],
+   "words": 2,
+   "imgs": [],
+   "links": [
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Edit with"
+  },
+  {
+   "path": "/profile",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [],
+   "words": 23,
+   "imgs": [
+    {
+     "src": "school-logo-VDG70hJG.png",
+     "alt": "ПМГ Христо Смирненски",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Опознай България Игри Флашкарти За нас Вход Моля, влезте в профила си Влез във видеоигра режим (нестабилен) Имаш въпрос? Питай AI. Edit with"
+  },
+  {
+   "path": "/reset-password",
+   "status": 200,
+   "errs": [],
+   "title": "България",
+   "desc": "Интерактивен географски куиз за България. Тествайте знанията си за всяка област на страната.",
+   "robots": null,
+   "canonical": null,
+   "h1": [],
+   "h2": [
+    "Невалиден или изтекъл линк"
+   ],
+   "words": 24,
+   "imgs": [
+    {
+     "src": "school-logo-VDG70hJG.png",
+     "alt": "ПМГ Христо Смирненски",
+     "wh": false,
+     "loading": "auto"
+    }
+   ],
+   "links": [
+    "/",
+    "/games",
+    "/flashcards",
+    "/about",
+    "https://lovable.dev/projects/lovp_050gdhasq59e28zb55q4q0c86y?utm_source=lovable-badge&referral_code=badge%3Alovp_050gdhasq59e28zb55q4q0c86y"
+   ],
+   "jsonld": 0,
+   "text": "Опознай България Игри Флашкарти За нас Вход Невалиден или изтекъл линк Към вход Влез във видеоигра режим (нестабилен) Имаш въпрос? Питай AI. Edit with"
+  }
+ ],
+ "mobileVitals": {
+  "lcp": 3644,
+  "cls": 0,
+  "lcpEl": "BUTTON ",
+  "fcp": 628,
+  "kb": 1199,
+  "longTasks": 0,
+  "loadS": 1.692,
+  "tapMs": 21
+ }
+}

@@ -1,0 +1,264 @@
+{
+ "summary": {
+  "health_score": 29,
+  "business_type": "Educational games / learning resource (non-commercial, Bulgarian)",
+  "top_findings": [
+   "Nested routes (/flashcards/*) render blank on direct visit (base './')",
+   "Soft 404s: every unknown URL returns 200",
+   "Identical 8-character title and description on all 11 routes",
+   "Client-side rendering only: raw HTML is empty for non-JS crawlers",
+   "No sitemap, no canonical, no structured data"
+  ],
+  "quick_wins": [
+   "vite.config.ts base: '/'",
+   "Per-route title, description, canonical and H1",
+   "noindex on 404, /profile, /reset-password",
+   "Add sitemap.xml + robots Sitemap line",
+   "Add WebSite/LearningResource JSON-LD"
+  ]
+ },
+ "categories": [
+  {
+   "name": "Technical SEO",
+   "score": 30,
+   "what_works": [
+    "HTTPS + HSTS, nosniff, referrer policy",
+    "http→https 301",
+    "robots.txt allows all crawlers",
+    "0 JS errors on 11 routes"
+   ],
+   "findings": [
+    {
+     "title": "Nested routes render blank on direct visit",
+     "severity": "Critical",
+     "description": "base: './' in vite.config.ts makes /flashcards/* request /flashcards/assets/index-*.js (404); page shows only the Lovable badge.",
+     "recommendation": "Set base: '/'."
+    },
+    {
+     "title": "Soft 404: unknown URLs return 200",
+     "severity": "Critical",
+     "description": "/this-page-does-not-exist returns 200 with the full app shell.",
+     "recommendation": "noindex on the NotFound route."
+    },
+    {
+     "title": "Client-side rendering only",
+     "severity": "High",
+     "description": "Raw HTML: 0 headings, 0 links, 3-word body.",
+     "recommendation": "Pre-render routes at build time."
+    },
+    {
+     "title": "No sitemap.xml",
+     "severity": "High",
+     "description": "/sitemap.xml returns 404; no Sitemap line in robots.txt.",
+     "recommendation": "Add sitemap with the 9 indexable routes."
+    },
+    {
+     "title": "No canonical tags",
+     "severity": "High",
+     "description": "0 of 11 routes.",
+     "recommendation": "Self-referencing canonical per route."
+    },
+    {
+     "title": "www redirect is 302",
+     "severity": "Medium",
+     "description": "www.bulgaria-game.com → apex with 302.",
+     "recommendation": "Make it a 301."
+    }
+   ]
+  },
+  {
+   "name": "Content Quality",
+   "score": 30,
+   "what_works": [
+    "Bulgarian-language content with a strong interactive format"
+   ],
+   "findings": [
+    {
+     "title": "Thin content site-wide",
+     "severity": "High",
+     "description": "Rendered pages carry 23–100 words; flashcard sets show 0 on a direct visit.",
+     "recommendation": "Intro copy, per-chapter passages, game landing pages."
+    },
+    {
+     "title": "No sources, dates or project framing",
+     "severity": "High",
+     "description": "Historical claims have no citations; no publisher entity.",
+     "recommendation": "Cite sources; credit the school as publisher."
+    },
+    {
+     "title": "Students' personal emails published",
+     "severity": "Medium",
+     "description": "mailto links on /about; repeated in the chatbot context.",
+     "recommendation": "Replace with a school contact."
+    }
+   ]
+  },
+  {
+   "name": "On-Page SEO",
+   "score": 25,
+   "what_works": [
+    "Clean hub navigation with real <a href> links"
+   ],
+   "findings": [
+    {
+     "title": "Identical title on all routes",
+     "severity": "High",
+     "description": "'България' (8 chars) on 11/11 routes.",
+     "recommendation": "Per-route titles (see ACTION-PLAN.md)."
+    },
+    {
+     "title": "Identical meta description on all routes",
+     "severity": "High",
+     "description": "Same 92-character description on 11/11 routes.",
+     "recommendation": "Per-route descriptions."
+    },
+    {
+     "title": "Missing or English H1",
+     "severity": "High",
+     "description": "No H1 on 6/11 routes; homepage H1 is 'Bulgaria'.",
+     "recommendation": "Bulgarian H1 per route."
+    },
+    {
+     "title": "Lovable OG image, no og:url",
+     "severity": "Medium",
+     "description": "og:image points at lovable.dev (fixed in repo, not yet deployed).",
+     "recommendation": "Deploy; add og:url and a site preview image."
+    }
+   ]
+  },
+  {
+   "name": "Schema / Structured Data",
+   "score": 0,
+   "what_works": [],
+   "findings": [
+    {
+     "title": "No structured data",
+     "severity": "Medium",
+     "description": "0 JSON-LD blocks on 11 routes.",
+     "recommendation": "WebSite + LearningResource + EducationalOrganization."
+    }
+   ]
+  },
+  {
+   "name": "Performance (CWV)",
+   "score": 55,
+   "what_works": [
+    "CLS 0.00",
+    "FCP 0.63 s (throttled mobile lab)",
+    "Image dimensions set; lazy loading below the fold"
+   ],
+   "findings": [
+    {
+     "title": "Mobile lab LCP 3.6 s",
+     "severity": "Medium",
+     "description": "One throttled run (1.6 Mbps, 4x CPU); there is no field data.",
+     "recommendation": "Trim the critical path; preload the hero assets."
+    },
+    {
+     "title": "5 MB Earth texture on the homepage",
+     "severity": "High",
+     "description": "earth-day-8k.webp is 5,014 KB; total transfer 10.5 MB.",
+     "recommendation": "Load on approach; 2K for phones."
+    }
+   ]
+  },
+  {
+   "name": "AI Search Readiness",
+   "score": 25,
+   "what_works": [
+    "All AI search and training crawlers allowed"
+   ],
+   "findings": [
+    {
+     "title": "Empty HTML for non-JS AI crawlers",
+     "severity": "High",
+     "description": "OAI-SearchBot, PerplexityBot and Claude-SearchBot receive a 2-word body.",
+     "recommendation": "Pre-render."
+    },
+    {
+     "title": "Brand name collides with a BNT programme",
+     "severity": "Medium",
+     "description": "'Опознай България' is an existing BNT show.",
+     "recommendation": "Distinct name and entity schema."
+    },
+    {
+     "title": "No citable passages",
+     "severity": "Medium",
+     "description": "0 self-contained answer blocks.",
+     "recommendation": "Write intro and per-chapter fact blocks."
+    }
+   ]
+  },
+  {
+   "name": "Images",
+   "score": 45,
+   "what_works": [
+    "Width/height on every image",
+    "Native lazy loading"
+   ],
+   "findings": [
+    {
+     "title": "Empty alt on content images",
+     "severity": "Medium",
+     "description": "27/27 images on / have alt=''.",
+     "recommendation": "Descriptive alt for the timeline photos."
+    },
+    {
+     "title": "Large JPEGs, no srcset",
+     "severity": "Medium",
+     "description": "1536px JPEGs of 160–280 KB for every viewport.",
+     "recommendation": "WebP/AVIF plus srcset."
+    }
+   ]
+  }
+ ],
+ "action_plan": {
+  "phases": [
+   {
+    "name": "Phase 1: Critical Fixes",
+    "timeframe": "Week 1",
+    "items": [
+     "Fix base path",
+     "noindex 404/profile/reset",
+     "Per-route metadata + H1",
+     "sitemap.xml"
+    ]
+   },
+   {
+    "name": "Phase 2: High-Impact Improvements",
+    "timeframe": "Weeks 2-3",
+    "items": [
+     "Pre-render routes",
+     "Lazy-load the Earth texture",
+     "JSON-LD",
+     "www 301"
+    ]
+   },
+   {
+    "name": "Phase 3: Content & Authority",
+    "timeframe": "Month 2",
+    "items": [
+     "Intro and timeline passages with sources",
+     "Alt text + WebP/AVIF",
+     "Game landing pages + province table",
+     "Privacy: remove student emails",
+     "Distinct branding + mentions"
+    ]
+   },
+   {
+    "name": "Phase 4: Monitoring & Iteration",
+    "timeframe": "Ongoing",
+    "items": [
+     "Search Console + Bing + IndexNow",
+     "Drift baseline after Phase 1",
+     "CrUX/PageSpeed API key",
+     "Hide Lovable badge"
+    ]
+   }
+  ]
+ },
+ "artifacts": {
+  "findings_dir": "findings/",
+  "screenshots_dir": "screenshots/"
+ }
+}
