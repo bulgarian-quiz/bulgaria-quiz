@@ -1,0 +1,2202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 216 68% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 210 30% 92%;
+    --accent-foreground: 220 20% 20%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 10%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 216 68% 30%;
+
+    --radius: 0.75rem;
+
+    --map-default: 210 30% 85%;
+    --map-hover: 216 48% 62%;
+    --map-complete-perfect: 142 71% 65%;
+    --map-complete-good: 45 93% 60%;
+    --map-complete-poor: 0 72% 60%;
+    
+    /* iOS 26 Liquid Glass Variables */
+    --glass-bg: 0 0% 100%;
+    --glass-border: 0 0% 100%;
+    --glass-shadow: 220 20% 50%;
+    --glass-specular: 0 0% 100%;
+    --glass-tint: 216 64% 94%;
+    --journey-bg: 220 35% 3%;
+    --journey-surface: 220 32% 6%;
+    --journey-blue: 216 68% 30%;
+    --journey-paper: 210 20% 96%;
+    --journey-ink: 220 28% 7%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 20% 14%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 20% 14%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 216 68% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 210 10% 60%;
+
+    --accent: 220 20% 22%;
+    --accent-foreground: 210 20% 90%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 93% 47%;
+    --warning-foreground: 0 0% 10%;
+
+    --border: 220 15% 25%;
+    --input: 220 15% 25%;
+    --ring: 216 68% 36%;
+
+    --map-default: 220 20% 30%;
+    --map-hover: 216 48% 40%;
+    --map-complete-perfect: 142 60% 35%;
+    --map-complete-good: 45 80% 40%;
+    --map-complete-poor: 0 60% 40%;
+    
+    /* iOS 26 Liquid Glass Variables - Dark */
+    --glass-bg: 220 30% 15%;
+    --glass-border: 0 0% 100%;
+    --glass-shadow: 220 30% 5%;
+    --glass-specular: 0 0% 100%;
+    --glass-tint: 216 42% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: var(--font-text);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-text);
+  }
+}
+
+@layer components {
+  /* ============================================
+     iOS 26 LIQUID GLASS EFFECTS
+     Authentic Apple-style translucent materials
+     ============================================ */
+
+  /* Main Glass Card - iOS 26 Style */
+  .glass-card {
+    @apply relative overflow-hidden;
+    border-radius: 28px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.08) 0%,
+        hsl(var(--glass-tint) / 0.04) 20%,
+        transparent 40%,
+        hsl(var(--glass-tint) / 0.03) 60%,
+        hsl(var(--glass-specular) / 0.06) 100%
+      );
+    backdrop-filter: blur(80px) saturate(180%);
+    -webkit-backdrop-filter: blur(80px) saturate(180%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.18);
+    box-shadow: 
+      /* Outer soft shadow */
+      0 2px 40px hsl(var(--glass-shadow) / 0.08),
+      0 8px 60px hsl(var(--glass-shadow) / 0.06),
+      /* Inner specular highlight - top edge */
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5),
+      /* Subtle inner glow */
+      inset 0 0 40px hsl(var(--glass-specular) / 0.03);
+  }
+
+  /* Top specular shine */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glass-specular) / 0.6) 20%,
+      hsl(var(--glass-specular) / 0.8) 50%,
+      hsl(var(--glass-specular) / 0.6) 80%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Subtle gradient overlay */
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(
+        ellipse 100% 60% at 50% 0%,
+        hsl(var(--glass-specular) / 0.06) 0%,
+        transparent 60%
+      );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Glass Button - iOS 26 */
+  .glass-button {
+    @apply relative overflow-hidden transition-interactive duration-200;
+    border-radius: 18px;
+    background: 
+      linear-gradient(
+        145deg,
+        hsl(var(--glass-specular) / 0.12) 0%,
+        hsl(var(--glass-tint) / 0.06) 50%,
+        hsl(var(--glass-specular) / 0.08) 100%
+      );
+    backdrop-filter: blur(60px) saturate(180%);
+    -webkit-backdrop-filter: blur(60px) saturate(180%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.2);
+    box-shadow: 
+      0 1px 20px hsl(var(--glass-shadow) / 0.06),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5),
+      inset 0 0 20px hsl(var(--glass-specular) / 0.02);
+  }
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--glass-specular) / 0.5),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .glass-button:hover {
+    background: 
+      linear-gradient(
+        145deg,
+        hsl(var(--glass-specular) / 0.2) 0%,
+        hsl(var(--glass-tint) / 0.1) 50%,
+        hsl(var(--glass-specular) / 0.15) 100%
+      );
+    box-shadow: 
+      0 4px 30px hsl(var(--glass-shadow) / 0.1),
+      0 1px 3px hsl(var(--glass-shadow) / 0.1),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.6),
+      inset 0 0 30px hsl(var(--glass-specular) / 0.04);
+    transform: translateY(-1px);
+  }
+  }
+
+  /* Primary Glass Button - iOS 26 */
+  .glass-button-primary {
+    @apply relative overflow-hidden transition-interactive duration-200 text-white font-semibold;
+    border-radius: 18px;
+    background: 
+      linear-gradient(
+        145deg,
+        hsl(var(--primary) / 0.9) 0%,
+        hsl(var(--primary) / 0.75) 50%,
+        hsl(var(--primary) / 0.85) 100%
+      );
+    backdrop-filter: blur(40px) saturate(160%);
+    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    border: 0.5px solid hsl(var(--primary) / 0.3);
+    box-shadow: 
+      0 2px 30px hsl(var(--primary) / 0.3),
+      0 8px 40px hsl(var(--primary) / 0.15),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4),
+      inset 0 0 20px hsl(var(--primary) / 0.1);
+  }
+
+  .glass-button-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--glass-specular) / 0.5),
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .glass-button-primary:hover {
+    box-shadow: 
+      0 4px 40px hsl(var(--primary) / 0.4),
+      0 12px 50px hsl(var(--primary) / 0.2),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5),
+      inset 0 0 30px hsl(var(--primary) / 0.15);
+    transform: translateY(-2px);
+  }
+  }
+
+  /* Glass Input - iOS 26 */
+  .glass-input {
+    @apply transition-interactive duration-200;
+    border-radius: 14px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.06) 0%,
+        transparent 100%
+      );
+    backdrop-filter: blur(60px) saturate(160%);
+    -webkit-backdrop-filter: blur(60px) saturate(160%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.15);
+    box-shadow: 
+      inset 0 1px 3px hsl(var(--glass-shadow) / 0.05),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.2);
+  }
+
+  .glass-input:focus {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 
+      0 0 0 4px hsl(var(--primary) / 0.1),
+      0 0 30px hsl(var(--primary) / 0.15),
+      inset 0 1px 3px hsl(var(--glass-shadow) / 0.03);
+  }
+
+  /* Glass Navbar - iOS 26 */
+  .glass-navbar {
+    background: 
+      linear-gradient(
+        180deg,
+        hsl(var(--glass-specular) / 0.08) 0%,
+        hsl(var(--glass-tint) / 0.04) 50%,
+        hsl(var(--glass-specular) / 0.06) 100%
+      );
+    backdrop-filter: blur(100px) saturate(200%);
+    -webkit-backdrop-filter: blur(100px) saturate(200%);
+    border-bottom: 0.5px solid hsl(var(--glass-border) / 0.1);
+    box-shadow: 
+      0 1px 30px hsl(var(--glass-shadow) / 0.05),
+      inset 0 -0.5px 0 hsl(var(--glass-shadow) / 0.05),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.3);
+  }
+
+  /* Glass Panel - iOS 26 */
+  .glass-panel {
+    @apply relative overflow-hidden;
+    border-radius: 22px;
+    background: 
+      linear-gradient(
+        150deg,
+        hsl(var(--glass-specular) / 0.1) 0%,
+        hsl(var(--glass-tint) / 0.05) 30%,
+        transparent 50%,
+        hsl(var(--glass-tint) / 0.04) 70%,
+        hsl(var(--glass-specular) / 0.08) 100%
+      );
+    backdrop-filter: blur(70px) saturate(180%);
+    -webkit-backdrop-filter: blur(70px) saturate(180%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.15);
+    box-shadow: 
+      0 2px 40px hsl(var(--glass-shadow) / 0.06),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4),
+      inset 0 0 30px hsl(var(--glass-specular) / 0.02);
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glass-specular) / 0.5) 30%,
+      hsl(var(--glass-specular) / 0.7) 50%,
+      hsl(var(--glass-specular) / 0.5) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Glass Tag - iOS 26 */
+  .glass-tag {
+    @apply inline-flex items-center px-4 py-2 text-sm font-medium transition-interactive duration-200;
+    border-radius: 100px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.15) 0%,
+        hsl(var(--glass-tint) / 0.08) 50%,
+        hsl(var(--glass-specular) / 0.1) 100%
+      );
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.2);
+    box-shadow: 
+      0 1px 15px hsl(var(--glass-shadow) / 0.05),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5),
+      inset 0 0 15px hsl(var(--glass-specular) / 0.02);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .glass-tag:hover {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.22) 0%,
+        hsl(var(--glass-tint) / 0.12) 50%,
+        hsl(var(--glass-specular) / 0.18) 100%
+      );
+    transform: scale(1.03);
+    box-shadow: 
+      0 2px 20px hsl(var(--glass-shadow) / 0.08),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.6);
+  }
+  }
+
+  /* Liquid Glow Effect - iOS 26 */
+  .liquid-glow {
+    position: relative;
+  }
+
+  .liquid-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: 
+      radial-gradient(
+        ellipse 80% 50% at 50% 0%,
+        hsl(var(--primary) / 0.25) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 50% 100%,
+        hsl(217 100% 70% / 0.15) 0%,
+        transparent 70%
+      );
+    border-radius: inherit;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+    z-index: -1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .liquid-glow:hover::before {
+    opacity: 1;
+    filter: blur(30px);
+  }
+  }
+
+  /* Glass Orb - Background decoration */
+  .glass-orb {
+    @apply absolute rounded-full;
+    background: 
+      radial-gradient(
+        circle at 35% 35%,
+        hsl(var(--primary) / 0.2) 0%,
+        hsl(var(--primary) / 0.08) 30%,
+        transparent 60%
+      );
+    filter: blur(80px);
+    animation: float-orb 12s ease-in-out infinite;
+  }
+
+  @keyframes float-orb {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.6;
+    }
+    33% {
+      transform: translate(15px, -20px) scale(1.1);
+      opacity: 0.8;
+    }
+    66% {
+      transform: translate(-10px, -30px) scale(0.95);
+      opacity: 0.5;
+    }
+  }
+
+  /* Map Region Styles */
+  .map-region {
+    @apply cursor-pointer transition-interactive duration-200;
+    fill: hsl(var(--map-default));
+    stroke: hsl(var(--foreground) / 0.3);
+    stroke-width: 1;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .map-region:hover {
+    fill: hsl(var(--map-hover));
+    filter: brightness(1.05) drop-shadow(0 0 10px hsl(var(--primary) / 0.3));
+  }
+  }
+
+  .map-region.complete-perfect {
+    fill: hsl(var(--map-complete-perfect));
+  }
+
+  .map-region.complete-good {
+    fill: hsl(var(--map-complete-good));
+  }
+
+  .map-region.complete-poor {
+    fill: hsl(var(--map-complete-poor));
+  }
+
+  /* Answer Option - iOS 26 */
+  .answer-option {
+    @apply w-full p-4 transition-interactive duration-200 text-left;
+    border-radius: 18px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.08) 0%,
+        hsl(var(--glass-tint) / 0.04) 100%
+      );
+    backdrop-filter: blur(50px) saturate(160%);
+    -webkit-backdrop-filter: blur(50px) saturate(160%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.15);
+    box-shadow: 
+      0 1px 15px hsl(var(--glass-shadow) / 0.04),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .answer-option:hover:not(:disabled) {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.12) 0%,
+        hsl(var(--primary) / 0.06) 100%
+      );
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateX(4px);
+    box-shadow: 
+      0 2px 25px hsl(var(--primary) / 0.12),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5);
+  }
+  }
+
+  .answer-option.selected {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.15) 0%,
+        hsl(var(--primary) / 0.08) 100%
+      );
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 
+      0 2px 30px hsl(var(--primary) / 0.15),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4);
+  }
+
+  .answer-option.correct,
+  .answer-option.revealed-correct {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--success) / 0.18) 0%,
+        hsl(var(--success) / 0.1) 100%
+      );
+    border-color: hsl(var(--success) / 0.5);
+    box-shadow: 
+      0 2px 30px hsl(var(--success) / 0.15),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.3);
+  }
+
+  .answer-option.incorrect {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--destructive) / 0.18) 0%,
+        hsl(var(--destructive) / 0.1) 100%
+      );
+    border-color: hsl(var(--destructive) / 0.5);
+    box-shadow: 
+      0 2px 30px hsl(var(--destructive) / 0.15),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.3);
+  }
+
+  .answer-option:disabled {
+    @apply cursor-not-allowed opacity-70;
+  }
+
+  /* Quiz Popup - iOS 26 Liquid Glass Style */
+  .quiz-popup-card {
+    @apply relative overflow-hidden;
+    border-radius: 28px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.15) 0%,
+        hsl(var(--glass-tint) / 0.08) 20%,
+        hsl(var(--glass-bg) / 0.65) 40%,
+        hsl(var(--glass-tint) / 0.08) 60%,
+        hsl(var(--glass-specular) / 0.12) 100%
+      ),
+      hsl(var(--glass-bg) / 0.55);
+    backdrop-filter: blur(60px) saturate(150%);
+    -webkit-backdrop-filter: blur(60px) saturate(150%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.2);
+    box-shadow: 
+      0 4px 40px hsl(var(--glass-shadow) / 0.1),
+      0 10px 60px hsl(var(--glass-shadow) / 0.06),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5),
+      inset 0 0 30px hsl(var(--glass-specular) / 0.03);
+  }
+
+  .quiz-popup-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--glass-specular) / 0.5) 20%,
+      hsl(var(--glass-specular) / 0.6) 50%,
+      hsl(var(--glass-specular) / 0.5) 80%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .quiz-popup-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(
+        ellipse 100% 60% at 50% 0%,
+        hsl(var(--glass-specular) / 0.05) 0%,
+        transparent 60%
+      );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .quiz-popup-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.15) 0%,
+        hsl(var(--glass-tint) / 0.08) 100%
+      );
+    backdrop-filter: blur(40px);
+    border: 0.5px solid hsl(var(--glass-border) / 0.2);
+  }
+
+  .quiz-popup-button {
+    background: 
+      linear-gradient(
+        145deg,
+        hsl(var(--glass-specular) / 0.1) 0%,
+        hsl(var(--glass-tint) / 0.05) 100%
+      );
+    backdrop-filter: blur(30px);
+  }
+
+  .quiz-answer-option {
+    @apply w-full p-4 transition-interactive duration-200 text-left;
+    border-radius: 16px;
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--glass-specular) / 0.1) 0%,
+        hsl(var(--glass-tint) / 0.05) 100%
+      );
+    backdrop-filter: blur(50px) saturate(160%);
+    -webkit-backdrop-filter: blur(50px) saturate(160%);
+    border: 0.5px solid hsl(var(--glass-border) / 0.15);
+    box-shadow: 
+      0 2px 20px hsl(var(--glass-shadow) / 0.05),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .quiz-answer-option:hover:not(:disabled) {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.15) 0%,
+        hsl(var(--primary) / 0.08) 100%
+      );
+    border-color: hsl(var(--primary) / 0.3);
+    transform: translateX(4px);
+    box-shadow: 
+      0 4px 30px hsl(var(--primary) / 0.12),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.5);
+  }
+  }
+
+  .quiz-answer-option.selected {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--primary) / 0.18) 0%,
+        hsl(var(--primary) / 0.1) 100%
+      );
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 
+      0 4px 35px hsl(var(--primary) / 0.18),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.4);
+  }
+
+  .quiz-answer-option.revealed-correct {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--success) / 0.2) 0%,
+        hsl(var(--success) / 0.12) 100%
+      );
+    border-color: hsl(var(--success) / 0.5);
+    box-shadow: 
+      0 4px 35px hsl(var(--success) / 0.18),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.3);
+  }
+
+  .quiz-answer-option.incorrect {
+    background: 
+      linear-gradient(
+        135deg,
+        hsl(var(--destructive) / 0.2) 0%,
+        hsl(var(--destructive) / 0.12) 100%
+      );
+    border-color: hsl(var(--destructive) / 0.5);
+    box-shadow: 
+      0 4px 35px hsl(var(--destructive) / 0.18),
+      inset 0 0.5px 0 hsl(var(--glass-specular) / 0.3);
+  }
+
+  .quiz-answer-option:disabled {
+    @apply cursor-not-allowed opacity-70;
+  }
+
+  /* Quiz Popup Content */
+  .quiz-content {
+    @apply relative z-10;
+  }
+
+  /* Flashcard Flip */
+  .flashcard-container {
+    perspective: 1000px;
+  }
+
+  .flashcard {
+    transform-style: preserve-3d;
+    transition: transform 420ms var(--ease-in-out);
+  }
+
+  .flashcard.flipped {
+    transform: rotateY(180deg);
+  }
+
+  .flashcard-front,
+  .flashcard-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .flashcard-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Shine animation for glass elements */
+  @keyframes glass-shine {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .glass-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--glass-specular) / 0.15),
+      transparent
+    );
+    animation: glass-shine 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
+/* Mobile touch mode (auto-enabled on phones/tablets) */
+html.touch-mode { -webkit-tap-highlight-color: transparent; }
+html.touch-mode body { overscroll-behavior-y: none; }
+html.touch-mode button, html.touch-mode a, html.touch-mode [role="button"] { touch-action: manipulation; }
+html.touch-mode svg path { touch-action: manipulation; }
+html.touch-mode input, html.touch-mode textarea, html.touch-mode select { font-size: 16px; }
+
+@font-face {
+  font-family: 'Caveat Local';
+  src: url('/caveat.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: block;
+}
+
+.history-intro {
+  position: relative;
+  z-index: 60;
+  height: 5200vh;
+  background: hsl(0 0% 0%);
+}
+
+.history-intro__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 36rem;
+  overflow: hidden;
+  background: hsl(0 0% 0%);
+  color: hsl(0 0% 97%);
+  isolation: isolate;
+}
+
+.cinematic-intro__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.history-intro__wordmark {
+  position: absolute;
+  z-index: 12;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-family: 'Caveat Local', cursive;
+  font-size: clamp(7rem, 22vw, 20rem);
+  font-weight: 400;
+  line-height: 0.76;
+  letter-spacing: 0;
+  color: hsl(0 0% 98%);
+  text-shadow: 0 0 42px hsl(217 40% 78% / 0.15);
+  will-change: transform, opacity;
+}
+
+.history-intro__journey,
+.history-intro__images,
+.history-intro__scene,
+.history-intro__vignette {
+  position: absolute;
+  inset: 0;
+}
+
+.history-intro__journey {
+  z-index: 2;
+  will-change: opacity;
+}
+
+.history-intro__scene {
+  margin: 0;
+  transform-origin: center;
+  /* will-change is set inline on the one or two scenes on screen only: as a
+     permanent rule it kept all 23 full-screen photos as GPU layers, which
+     runs iPhones out of graphics memory mid-scroll. */
+}
+
+.history-intro__scene img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.6) contrast(1.08) brightness(0.72);
+  user-select: none;
+}
+
+.history-intro__vignette {
+  background: linear-gradient(90deg, hsl(0 0% 0% / 0.92) 0%, hsl(0 0% 0% / 0.3) 48%, hsl(0 0% 0% / 0.65) 100%), linear-gradient(0deg, hsl(0 0% 0% / 0.92), transparent 54%);
+}
+
+.history-intro__copy {
+  position: absolute;
+  z-index: 7;
+  left: clamp(1.5rem, 8vw, 8rem);
+  bottom: clamp(7.5rem, 18vh, 11rem);
+  width: min(40rem, calc(100vw - 3rem));
+  color: hsl(0 0% 97%);
+  will-change: opacity, transform;
+}
+
+.history-intro__copy > span {
+  display: block;
+  font-family: 'Caveat Local', cursive;
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  line-height: 0.78;
+  color: hsl(354 62% 34%);
+  text-shadow: 0 0 28px hsl(354 62% 34% / 0.22);
+}
+
+.history-intro__copy h2 {
+  margin: 1rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-wrap: balance;
+  /* Whole words only: the site-wide headings rule allows breaks anywhere, which
+     left single letters on their own line here. Too-wide words shrink instead. */
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: manual;
+}
+
+.history-intro__copy p {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-family: var(--font-text);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 1.65;
+  color: hsl(0 0% 90% / 0.82);
+}
+
+.history-intro__rail {
+  position: absolute;
+  z-index: 8;
+  right: 0;
+  bottom: 2.4rem;
+  left: 0;
+  height: 4rem;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 14%, black 86%, transparent);
+}
+
+.history-intro__rail::before {
+  content: '';
+  position: absolute;
+  top: 0.3rem;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: hsl(0 0% 100% / 0.22);
+}
+
+.history-intro__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.history-intro__tick {
+  width: 11.5rem;
+  color: hsl(0 0% 100% / 0.4);
+  transition: color 240ms ease;
+}
+
+.history-intro__tick i {
+  display: block;
+  width: 1px;
+  height: 0.65rem;
+  margin-bottom: 0.55rem;
+  background: currentColor;
+  transition: height 240ms var(--ease-out);
+}
+
+.history-intro__tick span {
+  font-family: var(--font-text);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+}
+
+.history-intro__tick.is-active {
+  color: hsl(0 0% 100% / 0.94);
+}
+
+.history-intro__tick.is-active i { height: 1.2rem; }
+
+.history-intro__counter {
+  position: absolute;
+  z-index: 9;
+  /* Sits below the fixed Skip / film controls instead of hiding behind them. */
+  top: calc(max(1.25rem, env(safe-area-inset-top)) + 3.75rem);
+  right: clamp(1.5rem, 5vw, 5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-text);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  color: hsl(0 0% 100% / 0.62);
+}
+
+.history-intro__counter i {
+  width: 2.5rem;
+  height: 1px;
+  background: hsl(0 0% 100% / 0.32);
+}
+
+.cinematic-intro__scroll-cue {
+  position: absolute;
+  z-index: 20;
+  left: 50%;
+  bottom: max(1.5rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  color: hsl(0 0% 96% / 0.72);
+  will-change: opacity, transform;
+}
+
+.history-intro__copy,
+.history-intro__counter,
+.history-intro__rail {
+  text-shadow: 0 2px 18px hsl(0 0% 0% / 0.84);
+}
+
+.history-intro__closing {
+  margin: 0;
+}
+
+.cinematic-intro__scroll-cue::after {
+  content: '';
+  width: 1px;
+  height: 2rem;
+  background: linear-gradient(180deg, hsl(0 0% 95% / 0.72), transparent);
+  animation: cinematic-scroll-line 2.4s ease-in-out infinite;
+}
+
+.cinematic-intro__scroll-cue span {
+  font-family: var(--font-text);
+  font-size: 0.63rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@keyframes cinematic-scroll-line {
+  0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.35; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+}
+
+@media (max-width: 767px) {
+  .history-intro { height: 4400vh; }
+  .history-intro__stage { min-height: 32rem; }
+  .history-intro__wordmark { font-size: clamp(4.5rem, 26vw, 11rem); }
+  .history-intro__scene img { object-position: 56% center; }
+  .history-intro__vignette { background: linear-gradient(0deg, hsl(0 0% 0% / 0.96) 0%, hsl(0 0% 0% / 0.24) 72%); }
+  .history-intro__copy { bottom: 7rem; }
+  .history-intro__copy > span { font-size: clamp(4.5rem, 24vw, 7rem); }
+  .history-intro__copy h2 { font-size: clamp(1.8rem, 9vw, 3rem); }
+  .history-intro__copy p { font-size: 0.9rem; line-height: 1.5; }
+  .history-intro__rail { bottom: 1.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .history-intro__tick { transition: none; }
+  .cinematic-intro__scroll-cue::after { animation: none; }
+}
+
+.space-games {
+  position: relative;
+  z-index: 60;
+  height: 650svh;
+  background: hsl(0 0% 0%);
+}
+
+.space-games.is-complete {
+  z-index: 40;
+}
+
+.space-games__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 36rem;
+  overflow: hidden;
+  isolation: isolate;
+  background: hsl(0 0% 0%);
+  color: hsl(0 0% 97%);
+}
+
+.space-games__canvas,
+.space-games__shade {
+  position: absolute;
+  inset: 0;
+}
+
+.space-games__canvas {
+  z-index: 1;
+  will-change: opacity;
+}
+
+.space-games__shade {
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 48%, transparent 0%, hsl(0 0% 0% / 0.08) 42%, hsl(0 0% 0% / 0.74) 100%);
+}
+
+.space-games__title {
+  position: absolute;
+  z-index: 8;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 14rem);
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: 0;
+  text-shadow: 0 0 50px hsl(214 42% 76% / 0.12);
+  will-change: opacity, transform;
+}
+
+.space-games__closing {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  width: min(64rem, calc(100vw - 3rem));
+  text-align: center;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.space-games__closing > span {
+  display: block;
+  margin-bottom: 1.4rem;
+  font-family: var(--font-text);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: hsl(var(--primary-readable));
+}
+
+.space-games__closing h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.7rem, 7vw, 6.8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.space-games__closing h2 span {
+  display: inline;
+  transition: opacity 220ms linear;
+}
+
+.space-games__story {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  left: clamp(1.5rem, 9vw, 9rem);
+  width: min(44rem, calc(100vw - 3rem));
+  transform: translateY(-50%);
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.space-games__story--second {
+  right: clamp(1.5rem, 9vw, 9rem);
+  left: auto;
+  text-align: right;
+}
+
+.space-games__story > span {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-text);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: hsl(354 62% 48%);
+}
+
+.space-games__story h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.space-games__story p {
+  min-height: 5.5rem;
+  max-width: 39rem;
+  margin: 1.5rem 0 0;
+  font-family: var(--font-text);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: hsl(0 0% 90% / 0.78);
+}
+
+.space-games__story--second p { margin-left: auto; }
+
+.space-games__story p i {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 0.18rem;
+  vertical-align: -0.12em;
+  background: hsl(0 0% 96% / 0.84);
+  animation: space-caret 650ms steps(1) infinite;
+}
+
+.space-games__scroll {
+  position: absolute;
+  z-index: 10;
+  bottom: max(1.6rem, env(safe-area-inset-bottom));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  transform: translateX(-50%);
+  font-family: var(--font-text);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(0 0% 96% / 0.58);
+}
+
+.space-games__scroll svg { width: 1rem; }
+
+@keyframes space-caret {
+  0%, 48% { opacity: 1; }
+  49%, 100% { opacity: 0; }
+}
+
+@media (max-width: 767px) {
+  .space-games { height: 650svh; }
+  .space-games__stage { min-height: 32rem; }
+  .space-games__story,
+  .space-games__story--second { top: 46%; right: 1.25rem; left: 1.25rem; width: auto; text-align: left; }
+  .space-games__story h3 { font-size: clamp(2.7rem, 14vw, 4.8rem); }
+  .space-games__story--second p { margin-left: 0; }
+  .space-games__closing { width: calc(100vw - 2.5rem); }
+  .space-games__closing h2 { font-size: clamp(2.5rem, 13vw, 4.5rem); line-height: 1.04; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .space-games__story p i { animation: none; }
+}
+
+/* Post-introduction journey hub */
+.journey-hub {
+  position: relative;
+  z-index: 50;
+  min-height: 100svh;
+  padding: 5rem clamp(1.25rem, 5vw, 5rem) 3rem;
+  overflow: hidden;
+  background: hsl(var(--journey-bg));
+  color: hsl(var(--journey-paper));
+}
+
+.journey-hub__inner {
+  width: min(82rem, 100%);
+  margin: 0 auto;
+}
+
+.journey-hub__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: clamp(3rem, 7vw, 6rem);
+}
+
+.journey-hub__header > span,
+.journey-hub__header > p,
+.journey-tile small,
+.journey-tile__index,
+.journey-hub__footer,
+.journey-tile--profile > span {
+  font-family: var(--font-text);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.journey-hub__header > span {
+  font-size: 0.64rem;
+  color: hsl(var(--primary-readable));
+}
+
+.journey-hub__header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.journey-hub__header > p {
+  margin: 0;
+  max-width: 17rem;
+  font-size: 0.67rem;
+  line-height: 1.7;
+  color: hsl(var(--journey-paper) / 0.48);
+}
+
+.journey-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-auto-rows: clamp(5.5rem, 8vw, 8rem);
+  gap: clamp(0.75rem, 1.4vw, 1.25rem);
+}
+
+.journey-tile {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.25rem;
+  background: hsl(var(--journey-surface));
+  color: hsl(var(--journey-paper));
+  cursor: pointer;
+  isolation: isolate;
+  transform: translateZ(0);
+  transition: transform 360ms var(--ease-out), background-color 240ms ease, color 240ms ease;
+}
+
+.journey-tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px hsl(var(--journey-paper) / 0.06);
+  transition: box-shadow 240ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile:hover {
+  z-index: 5;
+  transform: scale(1.025);
+}
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile:hover::after {
+  box-shadow: inset 0 0 0 1px hsl(var(--journey-paper) / 0.22);
+}
+}
+
+.journey-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.64);
+  transition: transform 700ms var(--ease-out), filter 400ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile:hover img {
+  transform: scale(1.075);
+  filter: grayscale(0.35) contrast(1.06) brightness(0.78);
+}
+}
+
+.journey-tile__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, hsl(var(--journey-bg) / 0.92), transparent 70%);
+}
+
+.journey-tile__index {
+  position: absolute;
+  z-index: 3;
+  top: 1.25rem;
+  left: 1.25rem;
+  font-size: 0.56rem;
+  color: hsl(var(--journey-paper) / 0.55);
+}
+
+.journey-tile__copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  gap: 0.4rem;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+.journey-tile small {
+  font-size: 0.58rem;
+  color: hsl(var(--primary-readable));
+}
+
+.journey-tile strong {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 400;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+  letter-spacing: 0;
+}
+
+.journey-tile > svg {
+  position: absolute;
+  z-index: 3;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  transition: transform 260ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile:hover > svg { transform: translate3d(0.2rem, -0.2rem, 0); }
+}
+.journey-tile--games { grid-column: span 7; grid-row: span 4; }
+.journey-tile--portrait { grid-column: span 2; grid-row: span 4; }
+.journey-tile--portrait img { object-position: 42% center; }
+
+.journey-tile--about {
+  grid-column: span 3;
+  grid-row: span 2;
+  align-items: flex-end;
+  padding: 1.5rem;
+  background: hsl(var(--journey-paper));
+  color: hsl(var(--journey-ink));
+}
+
+.journey-tile--about strong { font-family: var(--font-text); font-size: clamp(0.8rem, 1.25vw, 1.1rem); text-transform: uppercase; letter-spacing: 0.12em; }
+.journey-tile--about .journey-tile__index { color: hsl(var(--journey-ink) / 0.48); }
+.journey-tile--flashcards { grid-column: span 3; grid-row: span 5; background: hsl(var(--journey-surface)); }
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile--flashcards:hover { background: hsl(var(--journey-blue)); }
+}
+.journey-tile--landscape { grid-column: span 4; grid-row: span 3; }
+.journey-tile--landscape img { object-position: center 37%; }
+
+.journey-tile--profile {
+  grid-column: span 3;
+  grid-row: span 3;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+  text-align: left;
+  background: transparent;
+}
+
+.journey-tile--profile > svg:first-child {
+  position: static;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: auto;
+  color: hsl(var(--primary-readable));
+}
+
+.journey-tile--profile > span { margin-bottom: 0.5rem; font-size: 0.58rem; color: hsl(var(--journey-paper) / 0.4); }
+.journey-tile--profile strong { font-size: clamp(1.8rem, 2.7vw, 3rem); }
+.journey-tile--detail { grid-column: span 2; grid-row: span 3; }
+.journey-tile--detail img { transform: scale(1.35); object-position: 68% center; }
+@media (hover: hover) and (pointer: fine) {
+  .journey-tile--detail:hover img { transform: scale(1.45); }
+}
+
+.journey-hub__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 2rem;
+  font-size: 0.54rem;
+  color: hsl(var(--journey-paper) / 0.3);
+}
+
+.journey-hub__footer i { width: 0.3rem; height: 0.3rem; border-radius: 50%; background: hsl(var(--journey-paper) / 0.2); }
+.journey-hub__footer i:first-of-type { background: hsl(var(--primary)); }
+
+@media (max-width: 767px) {
+  .space-games { height: 650svh; }
+  .journey-hub { padding: 5rem 1rem 3rem; }
+  .journey-hub__header { display: block; margin-bottom: 2.5rem; }
+  .journey-hub__header > span { display: block; margin-bottom: 1rem; }
+  .journey-hub__header h2 { max-width: 100%; font-size: 2.75rem; overflow-wrap: anywhere; }
+  .journey-hub__header > p { margin-top: 1.25rem; }
+  .journey-hub__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 5.5rem; gap: 0.65rem; }
+  .journey-tile--games { grid-column: span 3; grid-row: span 3; }
+  .journey-tile--portrait { grid-column: span 1; grid-row: span 3; }
+  .journey-tile--about { grid-column: span 2; grid-row: span 1; padding: 1rem; }
+  .journey-tile--flashcards { grid-column: span 2; grid-row: span 3; }
+  .journey-tile--landscape { grid-column: span 2; grid-row: span 2; }
+  .journey-tile--profile { grid-column: span 2; grid-row: span 3; padding: 1rem; }
+  .journey-tile--detail { grid-column: span 2; grid-row: span 1; }
+  .journey-tile__copy { padding: 1rem; }
+  .journey-tile strong { font-size: 1.8rem; }
+  .journey-tile--flashcards strong { font-size: 1.45rem; }
+  .journey-tile__index { top: 0.75rem; left: 0.75rem; }
+  .journey-tile > svg { top: 0.75rem; right: 0.75rem; }
+  .journey-tile--profile strong { font-size: 1.35rem; }
+  @media (hover: hover) and (pointer: fine) {
+    .journey-tile:hover { transform: scale(1.015); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-tile,
+  .journey-tile img,
+  .journey-tile > svg { transition-duration: 1ms; }
+}
+
+/* Cinematic game system */
+.game-shell {
+  --game-surface: 220 22% 6%;
+  background: linear-gradient(180deg, hsl(220 24% 4%), hsl(220 20% 7%));
+  color: hsl(var(--foreground));
+  isolation: isolate;
+}
+
+.game-shell::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 48%, hsl(var(--primary) / 0.09), transparent 42%), linear-gradient(90deg, hsl(var(--background) / 0.55), transparent 25%, transparent 75%, hsl(var(--background) / 0.55));
+}
+
+.game-shell__grain { z-index: 1; opacity: 0.12; }
+.game-display { font-family: var(--font-display); font-weight: 400; letter-spacing: 0; }
+
+.game-hud,
+.game-side-panel,
+.game-drop-map,
+.game-region-tray {
+  position: relative;
+  border: 1px solid hsl(var(--foreground) / 0.14);
+  border-radius: 1.5rem;
+  background: hsl(var(--game-surface) / 0.74);
+  backdrop-filter: blur(24px) saturate(110%);
+  box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.08), 0 24px 80px hsl(var(--background) / 0.24);
+}
+
+.game-hud::after,
+.game-drop-map::after,
+.game-region-tray::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--foreground) / 0.28), transparent);
+  pointer-events: none;
+}
+
+.game-map-stage { position: relative; z-index: 2; }
+.game-map { filter: saturate(0.2) contrast(1.08); }
+.game-map > img { filter: brightness(0.82) contrast(1.08); }
+@media (hover: hover) and (pointer: fine) {
+  .game-map-region:hover { box-shadow: inset 0 0 0 1px hsl(var(--foreground) / 0.38), 0 0 24px hsl(var(--primary) / 0.16); }
+}
+.game-map-badge,
+.game-map-score {
+  border-width: 1px;
+  border-style: solid;
+  border-color: hsl(var(--foreground) / 0.28);
+  border-radius: 999px;
+  background: hsl(var(--background) / 0.88);
+  box-shadow: 0 8px 24px hsl(var(--background) / 0.44);
+  padding: 0.35rem;
+}
+.game-map-score { padding: 0.28rem 0.55rem; }
+.game-map-tooltip {
+  border: 1px solid hsl(var(--foreground) / 0.16);
+  border-radius: 1rem;
+  background: hsl(var(--background) / 0.92);
+  box-shadow: 0 12px 32px hsl(var(--background) / 0.5);
+}
+
+.game-board-layout { position: relative; z-index: 2; }
+.game-drop-map { filter: saturate(0.12); }
+.game-drop-map img { opacity: 0.88; filter: contrast(1.2) brightness(1.28); }
+.game-drop-target { border-radius: 0.8rem; touch-action: manipulation; }
+@media (hover: hover) and (pointer: fine) {
+  .game-drop-target:hover { box-shadow: inset 0 0 0 1px hsl(var(--foreground) / 0.5), 0 0 20px hsl(var(--primary) / 0.2); }
+}
+.game-region-tray { scrollbar-width: thin; scrollbar-color: hsl(var(--foreground) / 0.28) transparent; }
+html.touch-mode .game-region-tray:has(.game-region-chip:active) { touch-action: none; }
+.game-region-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid hsl(var(--foreground) / 0.14);
+  border-radius: 1rem;
+  background: hsl(var(--foreground) / 0.04);
+  color: hsl(var(--foreground) / 0.8);
+  font-family: var(--font-text);
+}
+@media (hover: hover) and (pointer: fine) {
+  .game-region-chip:hover { border-color: hsl(var(--foreground) / 0.42); background: hsl(var(--foreground) / 0.08); transform: translateY(-2px); }
+}
+
+.editorial-dialog {
+  border: 1px solid hsl(var(--foreground) / 0.17);
+  border-radius: 1.75rem !important;
+  background: linear-gradient(145deg, hsl(220 20% 9% / 0.97), hsl(220 22% 5% / 0.98));
+  color: hsl(var(--foreground));
+  backdrop-filter: blur(32px) saturate(110%);
+  box-shadow: 0 40px 120px hsl(var(--background) / 0.72), inset 0 1px 0 hsl(var(--foreground) / 0.1);
+  font-family: var(--font-text);
+}
+.editorial-choice { border-radius: 1rem; }
+@media (hover: hover) and (pointer: fine) {
+  .editorial-choice:hover { transform: translateY(-2px); border-color: hsl(var(--foreground) / 0.34); }
+}
+
+.game-quiz-backdrop { background: hsl(var(--background) / 0.64); backdrop-filter: blur(16px); }
+.quiz-popup-card {
+  border-radius: 1.75rem;
+  background: hsl(45 22% 92% / 0.98);
+  color: hsl(220 20% 9%);
+  border: 1px solid hsl(0 0% 100% / 0.4);
+  box-shadow: 0 40px 120px hsl(var(--background) / 0.7), inset 0 1px 0 hsl(0 0% 100% / 0.7);
+  backdrop-filter: blur(30px);
+}
+.quiz-popup-card .text-foreground { color: hsl(220 20% 9%); }
+.quiz-popup-card .text-muted-foreground { color: hsl(220 12% 34%); }
+.quiz-popup-tag,
+.quiz-popup-button,
+.quiz-answer-option {
+  border-radius: 1rem;
+  background: hsl(0 0% 100% / 0.34);
+  border: 1px solid hsl(220 16% 16% / 0.14);
+  box-shadow: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .quiz-answer-option:hover:not(:disabled) { transform: translateX(6px); border-color: hsl(var(--primary) / 0.55); background: hsl(var(--primary) / 0.08); }
+}
+.quiz-answer-option.selected { border-color: hsl(var(--primary) / 0.72); background: hsl(var(--primary) / 0.12); }
+
+@media (max-width: 767px) {
+  .game-hud { border-right: 0; border-left: 0; }
+  .game-map-stage { padding-bottom: 5rem; }
+  .game-drop-map { max-height: 56svh; }
+  .game-region-tray { border-radius: 1.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-map-region,
+  .game-drop-target,
+  .game-region-chip,
+  .editorial-choice { transition: none; }
+}
+
+/* Shared journey palette: pages, menus, tools and dialogs use the same roles. */
+:root {
+  --background: 210 20% 96%;
+  --foreground: 220 28% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 28% 7%;
+  --popover: 210 20% 98%;
+  --popover-foreground: 220 28% 7%;
+  --primary: 216 68% 36%;
+  --primary-foreground: 210 20% 98%;
+  --secondary: 210 14% 91%;
+  --secondary-foreground: 220 28% 7%;
+  --muted: 210 14% 91%;
+  --muted-foreground: 220 10% 40%;
+  --accent: 216 68% 36%;
+  --accent-foreground: 210 20% 98%;
+  --border: 220 12% 82%;
+  --input: 220 12% 78%;
+  --ring: 216 68% 36%;
+  --journey-shadow: 0 24px 70px hsl(var(--journey-ink) / 0.22);
+  --journey-font-heading: var(--font-display);
+  --journey-font-body: var(--font-text);
+}
+.dark {
+  --background: var(--journey-bg);
+  --foreground: var(--journey-paper);
+  --card: var(--journey-surface);
+  --card-foreground: var(--journey-paper);
+  --popover: var(--journey-surface);
+  --popover-foreground: var(--journey-paper);
+  --secondary: 220 18% 12%;
+  --secondary-foreground: var(--journey-paper);
+  --muted: 220 18% 12%;
+  --muted-foreground: 210 10% 65%;
+  --accent: var(--primary);
+  --accent-foreground: var(--primary-foreground);
+  --border: 220 12% 20%;
+  --input: 220 12% 26%;
+}
+html, body { font-family: var(--journey-font-body); }
+body h1:not(.history-intro__wordmark), body h2, body h3, .game-display {
+  font-family: var(--journey-font-heading);
+  font-weight: 400;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+body h1:not(.history-intro__wordmark) { font-size: 3.5rem; line-height: 1.08; }
+.journey-hub__header h2 { max-width: 60rem; text-wrap: balance; }
+.journey-hub__header > p { max-width: none; }
+.journey-tile--flashcards strong { font-size: 2.2rem; }
+.journey-tile--profile { height: auto; white-space: normal; }
+.journey-tile--profile strong { overflow-wrap: anywhere; }
+.journey-hub, .history-intro, .space-games { scroll-margin-top: 0; }
+.intro-controls {
+  position: fixed;
+  top: max(1.25rem, env(safe-area-inset-top));
+  right: 1.25rem;
+  left: 1.25rem;
+  z-index: 75;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  color: hsl(var(--journey-paper));
+}
+.intro-controls .journey-button { min-height: 44px; height: auto; border-color: hsl(var(--journey-paper) / 0.3); color: inherit; background: hsl(var(--journey-bg) / 0.65); }
+@media (hover: hover) and (pointer: fine) {
+  .intro-controls .journey-button:hover { background: hsl(var(--primary)); }
+}
+.glass-card, .glass-panel, .editorial-dialog, .journey-dialog {
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+}
+.glass-card::before, .glass-card::after, .glass-panel::before, .liquid-glow::before,
+.glass-button::before, .glass-button-primary::before, .quiz-popup-card::before, .quiz-popup-card::after { display: none; }
+.journey-dialog, [role="alertdialog"], [role="menu"], [data-radix-popper-content-wrapper] > div {
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px !important;
+  box-shadow: var(--journey-shadow);
+  font-family: var(--journey-font-body);
+}
+.glass-navbar { background: hsl(var(--background) / 0.94); border-bottom: 1px solid hsl(var(--border)); box-shadow: none; backdrop-filter: blur(12px); }
+.journey-button, .glass-button, .glass-button-primary, .quiz-popup-button {
+  background: transparent;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 6px;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  font-family: var(--journey-font-body);
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+[role="menuitem"][data-highlighted] {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+  box-shadow: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .journey-button:not(:disabled):hover, .glass-button:not(:disabled):hover, .glass-button-primary:not(:disabled):hover, .quiz-popup-button:not(:disabled):hover {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+  box-shadow: none;
+}
+}
+@media (hover: hover) and (pointer: fine) {
+  .journey-button:not(:disabled):hover svg, .glass-button:hover svg, .glass-button-primary:hover svg { color: inherit; }
+}
+.glass-input { background: hsl(var(--background)); border: 1px solid hsl(var(--input)); border-radius: 6px; box-shadow: none; backdrop-filter: none; }
+.glass-tag, .quiz-popup-tag { background: transparent; border: 1px solid hsl(var(--border)); box-shadow: none; backdrop-filter: none; }
+.game-shell { --game-surface: var(--card); background: hsl(var(--background)); }
+.game-shell::before { display: none; }
+.game-hud, .game-side-panel, .game-drop-map, .game-region-tray { background: hsl(var(--card)); border-color: hsl(var(--border)); border-radius: 6px; box-shadow: none; backdrop-filter: none; }
+.game-hud::after, .game-drop-map::after, .game-region-tray::after { display: none; }
+.game-region-chip, .editorial-choice { border-radius: 6px; background: transparent; border-color: hsl(var(--border)); }
+@media (hover: hover) and (pointer: fine) {
+  .game-region-chip:not(:disabled):hover { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); border-color: hsl(var(--primary)); }
+}
+.quiz-popup-card { background: hsl(var(--card)); color: hsl(var(--card-foreground)); border: 1px solid hsl(var(--border)); border-radius: 6px; box-shadow: var(--journey-shadow); max-height: calc(100svh - 2rem); overflow-y: auto !important; backdrop-filter: none; }
+.quiz-popup-card .text-foreground { color: hsl(var(--card-foreground)); }
+.quiz-popup-card .text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.quiz-answer-option { color: hsl(var(--foreground)); background: transparent; border: 1px solid hsl(var(--border)); border-radius: 6px; box-shadow: none; backdrop-filter: none; }
+@media (hover: hover) and (pointer: fine) {
+  .quiz-answer-option:hover:not(:disabled) { background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); transform: translateX(3px); }
+}
+@media (hover: hover) and (pointer: fine) {
+  .quiz-answer-option:hover:not(:disabled) .text-foreground, .quiz-answer-option:hover:not(:disabled) .text-muted-foreground { color: inherit; }
+}
+.quiz-answer-option.selected { border-color: hsl(var(--primary)); background: hsl(var(--primary) / 0.15); }
+.collection-page { width: min(76rem, 100%); margin: 0 auto; padding: 7rem 1.5rem 4rem; }
+.collection-heading { margin-bottom: 3rem; }
+.collection-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.collection-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.collection-item { min-width: 0; background: hsl(var(--card)); border: 1px solid hsl(var(--border)); border-radius: 6px; overflow: hidden; transition: transform 220ms var(--ease-out), border-color 220ms ease; }
+@media (hover: hover) and (pointer: fine) {
+  .collection-item:hover { transform: translateY(-5px); border-color: hsl(var(--primary)); }
+}
+.collection-image { width: 100%; height: 16rem; object-fit: cover; filter: grayscale(1); transition: filter 400ms ease, transform 500ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .collection-item:hover .collection-image { filter: grayscale(0.25); transform: scale(1.025); }
+}
+.collection-image--map { object-fit: contain; padding: 1.5rem; }
+.collection-copy { padding: 1.5rem; }
+.collection-copy h2 { font-size: 2.25rem; line-height: 1.1; margin-bottom: 1rem; }
+.collection-copy p { min-height: 4rem; line-height: 1.7; color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem; }
+.flashcard-header { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1rem; align-items: center; }
+.flashcard-header h1 { text-align: center; font-size: 2rem !important; }
+.flashcard-face { padding: 2rem; }
+@media (max-width: 900px) {
+  .collection-grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  body h1:not(.history-intro__wordmark) { font-size: 2.75rem; }
+  .journey-hub__header h2 { font-size: 2.75rem; line-height: 1.05; }
+  .journey-tile--flashcards strong { font-size: 1.45rem; }
+  .intro-controls { right: 1rem; left: 1rem; gap: 0.5rem; }
+  .intro-controls .journey-button { padding: 0.6rem 0.75rem; font-size: 0.75rem; }
+  .collection-grid, .collection-grid--three { grid-template-columns: minmax(0, 1fr); }
+  .collection-page { padding: 6rem 1rem 3rem; }
+  .flashcard-header { grid-template-columns: auto auto; }
+  .flashcard-header h1 { grid-column: 1 / -1; grid-row: 2; text-align: left; }
+  .flashcard-header > :last-child { justify-self: end; }
+  .flashcard-face { padding: 1.25rem; }
+  .space-games__closing h2 { font-size: 2.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journey-button, .collection-item, .collection-image { transition: none; }
+}
+
+/* Shared geographic atlas: actual province silhouettes, not rectangular hotspots. */
+.region-atlas { width: 100%; min-width: 0; color: hsl(var(--foreground)); }
+.region-atlas svg { display: block; width: 100%; height: auto; overflow: visible; }
+.region-atlas__grid { stroke: hsl(var(--foreground) / 0.12); stroke-width: 1; }
+.region-atlas__province { fill: hsl(var(--foreground) / 0.06); stroke: hsl(var(--foreground) / 0.6); stroke-width: 1; vector-effect: non-scaling-stroke; cursor: pointer; transition: fill 220ms ease, stroke 220ms ease; }
+.region-atlas__province:focus-visible { fill: hsl(var(--primary) / 0.4); stroke: hsl(var(--primary)); outline: none; }
+@media (hover: hover) and (pointer: fine) {
+  .region-atlas__province:hover { fill: hsl(var(--primary) / 0.4); stroke: hsl(var(--primary)); outline: none; }
+}
+.region-atlas__province.is-complete { fill: hsl(var(--primary) / 0.25); stroke: hsl(var(--primary)); }
+.region-atlas__province.is-locked { cursor: not-allowed; }
+.region-atlas__label { fill: hsl(var(--foreground)); font: 12px var(--journey-font-body); pointer-events: none; }
+.region-atlas__compass { fill: hsl(var(--foreground)); font: 15px var(--journey-font-body); }
+.region-atlas__caption { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.75rem; color: hsl(var(--muted-foreground)); font-size: 0.6rem; }
+.region-atlas--placement .region-atlas__province { fill: hsl(var(--foreground) / 0.03); stroke: hsl(var(--foreground) / 0.45); }
+@media (hover: hover) and (pointer: fine) {
+  .region-atlas--placement .region-atlas__province:hover { fill: hsl(var(--primary) / 0.35); }
+}
+.region-atlas--placement .region-atlas__province.is-complete { fill: hsl(var(--primary) / 0.3); }
+.collection-image--artwork { height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.game-map:has(.region-atlas) { border: 0; background: transparent; box-shadow: none; overflow: visible; }
+.game-hud h1 { font-size: 1.75rem !important; line-height: 1.15; }
+@media (max-width: 767px) {
+  .region-atlas__label { font-size: 13px; }
+  .region-atlas__caption { flex-wrap: wrap; font-size: 0.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .region-atlas__province { transition: none; } }
+
+/* ============================================================
+   Motion + interaction layer
+   Tokens, press feedback, popover origins, focus, reduced motion.
+   Rules: transform/opacity only, ease-out for entrances, UI < 300ms,
+   hover only on real pointers, a gentler variant (not zero) for reduced motion.
+   ============================================================ */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 140ms;
+  --dur-hover: 180ms;
+  --dur-popover: 180ms;
+  --dur-modal: 240ms;
+}
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Respond on press, not on release: every pressable confirms it heard you. */
+.journey-button, .glass-button, .glass-button-primary, .quiz-popup-button {
+  transition: background-color var(--dur-hover) ease, color var(--dur-hover) ease, border-color var(--dur-hover) ease, transform var(--dur-press) var(--ease-out);
+}
+.game-region-chip, .editorial-choice, .quiz-answer-option {
+  transition: background-color var(--dur-hover) ease, color var(--dur-hover) ease, border-color var(--dur-hover) ease, transform var(--dur-press) var(--ease-out);
+}
+.journey-button:not(:disabled):active, .glass-button:not(:disabled):active, .glass-button-primary:not(:disabled):active,
+.quiz-popup-button:not(:disabled):active, .game-region-chip:not(:disabled):active, .editorial-choice:not(:disabled):active {
+  transform: scale(0.97);
+  transition-duration: 80ms;
+}
+.quiz-answer-option:not(:disabled):active { transform: scale(0.985); transition-duration: 80ms; }
+.journey-tile:active { transform: scale(0.985); transition-duration: 120ms; }
+.collection-item:active { transform: scale(0.99); }
+
+/* Popovers, menus, selects and tooltips grow from their trigger, not from the centre.
+   (Modals are not anchored, so they keep the default centred origin.) */
+[data-radix-popper-content-wrapper] > * {
+  transform-origin: var(--radix-popover-content-transform-origin,
+    var(--radix-dropdown-menu-content-transform-origin,
+    var(--radix-select-content-transform-origin,
+    var(--radix-tooltip-content-transform-origin,
+    var(--radix-hover-card-content-transform-origin,
+    var(--radix-context-menu-content-transform-origin,
+    var(--radix-menubar-content-transform-origin, center)))))));
+}
+
+/* Keyboard focus is always visible on the custom controls. */
+.journey-tile:focus-visible, .collection-item:focus-visible, .game-region-chip:focus-visible,
+.editorial-choice:focus-visible, .quiz-answer-option:focus-visible, .journey-button:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 3px;
+}
+
+/* Touch: no grey tap flash, no 300ms delay, no accidental text selection on controls. */
+@media (hover: none) {
+  button, a, [role="button"] { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  .journey-button, .glass-button, .glass-button-primary, .game-region-chip, .quiz-answer-option { -webkit-user-select: none; user-select: none; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-navbar, .glass-card, .glass-panel { background: hsl(var(--background)); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-button:not(:disabled):active, .glass-button:not(:disabled):active, .glass-button-primary:not(:disabled):active,
+  .quiz-popup-button:not(:disabled):active, .game-region-chip:not(:disabled):active, .editorial-choice:not(:disabled):active,
+  .quiz-answer-option:not(:disabled):active, .journey-tile:active, .collection-item:active { transform: none; }
+  .animate-slide-up, .animate-scale-in, .animate-blur-in { animation-name: fade-in; animation-duration: 0.2s; }
+  .animate-float, .animate-pulse-glow { animation: none; }
+}
+
+/* Touch targets: at least 44x44 on coarse pointers (Apple HIG / WCAG 2.5.8). */
+@media (pointer: coarse) {
+  .nav-hit { min-width: 2.75rem; min-height: 2.75rem; }
+}
+
+/* The brand blue is tuned for filled surfaces; as *text* on the near-black dark
+   theme it drops to ~2:1. Use a lighter step of the same hue for text only. */
+:root { --primary-readable: 216 80% 70%; }
+.dark .text-primary { color: hsl(var(--primary-readable)); }
+
+/* ============================================================
+   Motion beyond the intro: scroll reveals, living photographs,
+   the stitched band, a map that builds itself, answer feedback.
+   Transform / opacity / clip-path only; every piece has a gentler
+   reduced-motion variant at the end.
+   ============================================================ */
+
+/* Scroll reveals. Hidden only once JS has armed them (html.motion-ready),
+   so content never depends on the script. reveal.ts staggers siblings. */
+html.motion-ready .reveal { opacity: 0; transform: translate3d(0, 28px, 0); }
+html.motion-ready .reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Photographs open like a curtain and settle from a slight zoom. */
+html.motion-ready .collection-item.reveal > div:first-child { clip-path: inset(0 0 100% 0); }
+html.motion-ready .collection-item.reveal.is-in > div:first-child {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1000ms var(--ease-in-out) var(--reveal-delay, 0ms);
+}
+html.motion-ready .reveal .collection-image,
+html.motion-ready .journey-tile--image.reveal img,
+html.motion-ready .atlas-plate.reveal img { scale: 1.18; }
+html.motion-ready .reveal.is-in .collection-image,
+html.motion-ready .journey-tile--image.reveal.is-in img,
+html.motion-ready .atlas-plate.reveal.is-in img { scale: 1; transition: scale 1400ms var(--ease-out) var(--reveal-delay, 0ms); }
+
+/* Living photographs: a slow Ken Burns drift. Neighbours drift at different
+   speeds and directions so the page never moves in lockstep. */
+@keyframes ken-burns {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-2.5%, -1.5%, 0); }
+}
+.collection-image, .journey-tile--image img, .atlas-plate img { animation: ken-burns 26s ease-in-out infinite alternate; }
+.collection-item:nth-child(2n) .collection-image,
+.journey-tile--image:nth-child(2n) img { animation-duration: 32s; animation-direction: alternate-reverse; }
+.collection-item:nth-child(3n) .collection-image,
+.journey-tile--image:nth-child(3n) img { animation-duration: 38s; }
+.collection-image--map { animation: none; }
+
+/* The shevitsa band stitches itself in, one motif at a time. */
+html.motion-ready .collection-heading.reveal::after,
+html.motion-ready .journey-hub__band.reveal { clip-path: inset(0 100% 0 0); }
+html.motion-ready .collection-heading.reveal.is-in::after,
+html.motion-ready .journey-hub__band.reveal.is-in {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1100ms steps(12, end) calc(var(--reveal-delay, 0ms) + 250ms);
+}
+
+/* The map builds itself west to east when a game opens (--d is set per
+   province from its longitude), and a province pops when completed. */
+.region-atlas__province {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: province-in 600ms var(--ease-out) var(--d, 0ms) both;
+}
+.region-atlas__label { animation: label-in 400ms ease calc(var(--d, 0ms) + 250ms) both; }
+.region-atlas__province.is-complete, .region-atlas__province.is-partial, .region-atlas__province.is-low { animation: province-done 520ms var(--ease-out); }
+@keyframes province-in { from { opacity: 0; transform: scale(0.9); } }
+@keyframes label-in { from { opacity: 0; } }
+@keyframes province-done { 0% { transform: scale(1); } 40% { transform: scale(1.07); } 100% { transform: scale(1); } }
+
+/* ---- UI entrances, exits and feedback (motion-design pass) -------------------
+   Personality: Premium. One curve (--ease-out) for entrances, an accelerating
+   curve for exits, no overshoot, short distances. Exits run at about two thirds
+   of the entrance. Transform and opacity only. Entrances use fill-mode
+   "backwards" so nothing lingers after they end (a lingering animation would
+   switch off the backdrop blur of the translucent surfaces). */
+:root { --ease-exit: cubic-bezier(0.4, 0, 1, 1); }
+
+/* Floating surfaces (cookie banner, chat button) rise into place; the chat
+   button follows the banner by a beat. */
+.float-in { animation: float-in 320ms var(--ease-out) var(--float-delay, 0ms) backwards; }
+.float-out { animation: float-out 200ms var(--ease-exit) forwards; pointer-events: none; }
+@keyframes float-in { from { opacity: 0; transform: translateY(16px) scale(0.98); } }
+@keyframes float-out { to { opacity: 0; transform: translateY(10px) scale(0.98); } }
+
+/* Chat: each new message settles in from just below. */
+.chat-msg-in { animation: chat-msg-in 240ms var(--ease-out) backwards; }
+@keyframes chat-msg-in { from { opacity: 0; transform: translateY(8px); } }
+
+/* Quiz: the next question arrives from the right (forward), its answers a beat apart. */
+.quiz-step-in { animation: quiz-step-in 280ms var(--ease-out) backwards; }
+.quiz-step-in .quiz-answer-option { animation: quiz-option-in 260ms var(--ease-out) calc(60ms + var(--i, 0) * 40ms) backwards; }
+@keyframes quiz-step-in { from { opacity: 0; transform: translateX(16px); } }
+@keyframes quiz-option-in { from { opacity: 0; transform: translateY(8px); } }
+/* The verdict slides up under the answers; the tick or cross lands just after its row reacts. */
+.feedback-in { animation: feedback-in 240ms var(--ease-out) backwards; }
+@keyframes feedback-in { from { opacity: 0; transform: translateY(8px); } }
+.icon-pop { animation: icon-pop 200ms var(--ease-out) 80ms backwards; }
+.check-pop { animation: icon-pop 160ms var(--ease-out) backwards; }
+@keyframes icon-pop { from { opacity: 0; transform: scale(0.5); } }
+
+/* A button that becomes available (or unavailable) eases between the two states. */
+.journey-button, .glass-button, .glass-button-primary { transition-property: background-color, color, border-color, transform, opacity; }
+.journey-button:disabled, .glass-button-primary:disabled { transition-duration: 200ms; }
+
+/* Answer feedback: a small lift for right, a quick shake for wrong. */
+.quiz-answer-option.revealed-correct { animation: answer-pop 420ms var(--ease-out); }
+.quiz-answer-option.incorrect { animation: answer-shake 400ms var(--ease-in-out); }
+@keyframes answer-pop { 0% { transform: scale(1); } 45% { transform: scale(1.03); } 100% { transform: scale(1); } }
+@keyframes answer-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.motion-ready .reveal { transform: none; }
+  html.motion-ready .reveal.is-in { transition: opacity 300ms ease; }
+  html.motion-ready .collection-item.reveal > div:first-child,
+  html.motion-ready .collection-heading.reveal::after,
+  html.motion-ready .journey-hub__band.reveal { clip-path: none; }
+  html.motion-ready .reveal .collection-image,
+  html.motion-ready .journey-tile--image.reveal img,
+  html.motion-ready .atlas-plate.reveal img { scale: 1; }
+  .collection-image, .journey-tile--image img, .atlas-plate img { animation: none; }
+  .region-atlas__province, .region-atlas__province.is-complete, .region-atlas__province.is-partial, .region-atlas__province.is-low { animation: label-in 300ms ease both; }
+  .quiz-answer-option.revealed-correct, .quiz-answer-option.incorrect { animation: none; }
+  /* Reduced motion: no movement, a short fade instead; no pops. */
+  .float-in, .chat-msg-in, .quiz-step-in, .feedback-in, .quiz-step-in .quiz-answer-option { animation-name: ui-fade-in; animation-duration: 180ms; animation-delay: 0ms; }
+  .float-out { animation-name: ui-fade-out; animation-duration: 120ms; }
+  .icon-pop, .check-pop { animation: none; }
+}
+@keyframes ui-fade-in { from { opacity: 0; } }
+@keyframes ui-fade-out { to { opacity: 0; } }
+
+/* ============================================================
+   Scroll-linked motion graphics. Progress follows the scroll
+   position (scrub forward, scrub back) instead of playing once.
+   Native scroll-driven animations run off the main thread; browsers
+   without them keep the one-shot reveals above. Individual
+   translate / rotate / scale properties are animated so the
+   elements' own hover and press transforms still apply on top.
+   ============================================================ */
+
+/* Line drawing of the 28 provinces behind page titles. Static elsewhere. */
+.map-lineart {
+  position: absolute;
+  top: -5.5rem;
+  right: -3%;
+  z-index: 0;
+  width: min(62vw, 760px);
+  height: auto;
+  color: hsl(var(--foreground));
+  opacity: 0.2;
+  pointer-events: none;
+}
+.map-lineart path { fill: none; stroke: currentColor; stroke-width: 1.25; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.collection-heading { position: relative; z-index: 1; }
+.collection-grid { position: relative; z-index: 1; }
+@media (max-width: 767px) { .map-lineart { top: -3rem; right: -12%; width: 92vw; opacity: 0.16; } }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The map draws itself west to east as the page scrolls; a fifth is
+       already drawn at the top so it reads as an invitation to scroll. */
+    .map-lineart path {
+      animation: line-draw linear both;
+      animation-timeline: scroll(root);
+      animation-range: calc(var(--k, 0) * 1.4%) calc(45% + var(--k, 0) * 1.4%);
+    }
+    @keyframes line-draw { from { stroke-dashoffset: 0.8; } to { stroke-dashoffset: 0; } }
+    .map-lineart {
+      animation: lineart-drift linear both;
+      animation-timeline: scroll(root);
+    }
+    @keyframes lineart-drift { from { translate: 0 0; } to { translate: 0 18%; } }
+
+    /* Cards rise and lean back into place as they enter. */
+    .collection-grid { perspective: 1400px; }
+    .collection-item {
+      transform-origin: 50% 100%;
+      animation: scroll-card linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    @keyframes scroll-card {
+      from { translate: 0 90px; rotate: 1 0 0 14deg; scale: 0.93; }
+      to { translate: 0 0; rotate: 1 0 0 0deg; scale: 1; }
+    }
+
+    /* Photographs move slower than their frame (parallax), on top of the drift. */
+    .collection-item > div:first-child img, .journey-tile--image img {
+      scale: 1.14;
+      animation: ken-burns 26s ease-in-out infinite alternate, scroll-parallax linear both;
+      animation-timeline: auto, view();
+      animation-range: normal, cover 0% cover 100%;
+    }
+    @keyframes scroll-parallax { from { translate: 0 -7%; } to { translate: 0 7%; } }
+
+    /* Hub tiles arrive from different directions, like pieces of a mosaic. */
+    .journey-tile {
+      animation: tile-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+    .journey-tile--games { --from-x: -90px; --from-y: 40px; }
+    .journey-tile--portrait { --from-x: 0px; --from-y: 160px; }
+    .journey-tile--about { --from-x: 90px; --from-y: 20px; }
+    .journey-tile--flashcards { --from-x: 60px; --from-y: 120px; }
+    .journey-tile--landscape { --from-x: -70px; --from-y: 100px; }
+    .journey-tile--profile { --from-x: 0px; --from-y: 140px; }
+    .journey-tile--detail { --from-x: 80px; --from-y: 80px; }
+    @keyframes tile-in {
+      from { translate: var(--from-x, 0px) var(--from-y, 80px); scale: 0.9; }
+      to { translate: 0 0; scale: 1; }
+    }
+
+    /* "Продължи пътешествието" fills in word by word. */
+    .scroll-word {
+      display: inline-block;
+      animation: word-fill linear both;
+      animation-timeline: view();
+      animation-range: entry calc(20% + var(--w, 0) * 25%) cover calc(30% + var(--w, 0) * 10%);
+    }
+    @keyframes word-fill { from { opacity: 0.12; translate: 0 0.3em; } to { opacity: 1; translate: 0 0; } }
+  }
+}
+
+/* overflow:hidden turns an element into a scroll container, which captures
+   view() timelines underneath it so they never progress. overflow:clip
+   clips identically without that side effect. */
+.journey-hub, .journey-tile, .collection-item, .collection-item > div:first-child { overflow: clip; }
+
+/* The cookie banner sits beside the chat button; its hint bubble steps aside meanwhile. */
+html[data-cookie-banner="open"] .chat-teaser { opacity: 0; pointer-events: none; }
+
+/* Photo game progress bar grows with each answer (transform only). */
+.photo-quiz__progress > span { transition: transform 420ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .photo-quiz__progress > span { transition: none; } }
+
+/* Touch devices (iPhone, iPad, Android): the film grain is drawn without a blend
+   mode. Blending a full-screen layer makes Safari recombine the whole screen on
+   every scrolled frame; a faint plain overlay looks the same at a fraction of the cost. */
+@media (pointer: coarse) {
+  .cinematic-intro__grain { mix-blend-mode: normal; opacity: 0.07; }
+}
